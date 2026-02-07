@@ -1,0 +1,12 @@
+# textdomain: fai_chun
+
+##[ .cdb_translation.lua ]##
+Fai chun=
+The traditional decoration in China=
+
+##[ src/nodes.lua ]##
+Doufang (upright)=
+Doufang (inverted)=
+Chuntiao (vertical)=
+Chuntiao (horizontal)=
+Chunlian=

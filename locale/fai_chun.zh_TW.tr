@@ -1,0 +1,12 @@
+# textdomain: fai_chun
+
+##[ .cdb_translation.lua ]##
+Fai chun=揮春
+The traditional decoration in China=中國傳統裝飾
+
+##[ src/nodes.lua ]##
+Doufang (upright)=斗方（正立）
+Doufang (inverted)=斗方（翻轉）
+Chuntiao (vertical)=春條（直式）
+Chuntiao (horizontal)=春條（橫式）
+Chunlian=春聯

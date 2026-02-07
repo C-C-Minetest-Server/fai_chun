@@ -1,0 +1,40 @@
+# Text Overlay Mesh - Upside Down Texture
+# Dimensions: Width 10/16 (0.625), Height 10/16 (0.625)
+# Position: Centered X/Y, Z offset 0.425781
+# UV Mapping:
+#   - Horizontally Mirrored (Matches previous Luanti sign behavior)
+#   - Vertically Flipped (Upside Down)
+
+o text_entity_Plane
+
+# Vertices
+# X = +/- 0.312500
+# Y = +/- 0.312500
+
+v 0.312500 -0.312500 0.425781  # 1: Bottom Right
+v -0.312500 -0.312500 0.425781 # 2: Bottom Left
+v 0.312500 0.312500 0.425781   # 3: Top Right
+v -0.312500 0.312500 0.425781  # 4: Top Left
+
+# Texture Coordinates
+# V-coordinates flipped (0 becomes 1, 1 becomes 0)
+vt 0.000000 1.000000 # 1: Maps to Geometry Right (Now Top of Texture)
+vt 1.000000 1.000000 # 2: Maps to Geometry Left  (Now Top of Texture)
+vt 1.000000 0.000000 # 3: Maps to Geometry Left  (Now Bottom of Texture)
+vt 0.000000 0.000000 # 4: Maps to Geometry Right (Now Bottom of Texture)
+
+# Normals
+vn 0.0000 -0.0000 -1.0000
+
+g text_entity_Plane_text_entity
+s off
+
+# Face
+# Winding: BottomRight -> BottomLeft -> TopLeft -> TopRight
+# Note on indices:
+# 1/1 (BottomRight Vert / BottomRight UV) -> Now points to V=1
+# 2/2 (BottomLeft Vert / BottomLeft UV)   -> Now points to V=1
+# 4/3 (TopLeft Vert / TopLeft UV)         -> Now points to V=0
+# 3/4 (TopRight Vert / TopRight UV)       -> Now points to V=0
+
+f 1/1/1 2/2/1 4/3/1 3/4/1
