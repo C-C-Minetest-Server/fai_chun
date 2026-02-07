@@ -6,6 +6,12 @@
 local S = core.get_translator("fai_chun")
 
 local sound_signs = core.global_exists("xcompat") and xcompat.sounds.node_sound_leaves_defaults() or nil
+local groups = {
+    snappy = 3,
+    axey = 1,
+    swordy = 1,
+    handy = 1,
+}
 
 local function register_sign(name, def)
     def.tiles = {
@@ -39,7 +45,7 @@ register_sign("fai_chun:doufang_upright", {
     },
     walkable = false,
 
-    groups = { snappy = 1 },
+    groups = table.copy(groups),
     sounds = sound_signs,
     is_ground_content = false,
 
@@ -72,7 +78,7 @@ register_sign("fai_chun:doufang_inverted", {
     },
     walkable = false,
 
-    groups = { snappy = 1 },
+    groups = table.copy(groups),
     sounds = sound_signs,
     is_ground_content = false,
 
@@ -106,7 +112,7 @@ register_sign("fai_chun:chuntiao_vertical", {
     },
     walkable = false,
 
-    groups = { snappy = 1 },
+    groups = table.copy(groups),
     sounds = sound_signs,
     is_ground_content = false,
 
@@ -139,7 +145,7 @@ register_sign("fai_chun:chuntiao_horizontal", {
     },
     walkable = false,
 
-    groups = { snappy = 1 },
+    groups = table.copy(groups),
     sounds = sound_signs,
     is_ground_content = false,
 
@@ -172,7 +178,7 @@ register_sign("fai_chun:chunlian", {
     },
     walkable = false,
 
-    groups = { snappy = 1 },
+    groups = table.copy(groups),
     sounds = sound_signs,
     is_ground_content = false,
 
