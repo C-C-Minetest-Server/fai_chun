@@ -20,10 +20,16 @@ The full legel code of the licenses can be found at `COPYING.txt` (GPLv3) and `C
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+## License of documentation
+
+* `README.md`: 1F616EMO, [CC BY-SA 4.0][CCBYSA4].
+  * Derived work of the English Wikipedia article [_Fai chun_](https://en.wikipedia.org/wiki/Fai_chun), [revision 1336942083](https://en.wikipedia.org/w/index.php?title=Fai_chun&oldid=1336942083), [CC BY-SA 4.0][CCBYSA4].
+
 ## License of media
 
 All media: 1F616EMO, [CC0][CC0]
 
 Note that `fai_chun_doufang_inverted_indicator.png` is a derived work of `inventory_dir_uturn.png` from `trainblocks`. I am the sole author of that work (technically, the blue background comes fomr elsewhere, but that background does not reach the threshold of originality), and now relicense it under CC0.
 
+[CCBYSA4]: https://creativecommons.org/licenses/by-sa/4.0/deed.en
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
