@@ -5,8 +5,11 @@ Fai chun=
 The traditional decoration in China=
 
 ##[ src/nodes.lua ]##
-Doufang (upright)=
-Doufang (inverted)=
+@1 (upright)=
+Doufang=
+@1 (inverted)=
 Chuntiao (vertical)=
 Chuntiao (horizontal)=
 Chunlian=
+Doufang with text "@1"=
+fu=

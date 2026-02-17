@@ -5,8 +5,11 @@ Fai chun=挥春
 The traditional decoration in China=中国传统装饰
 
 ##[ src/nodes.lua ]##
-Doufang (upright)=斗方（正立）
-Doufang (inverted)=斗方（翻转）
+@1 (upright)=@1（正立）
+Doufang=斗方
+@1 (inverted)=@1（翻转）
 Chuntiao (vertical)=春条（直式）
 Chuntiao (horizontal)=春条（横式）
 Chunlian=春联
+Doufang with text "@1"=“@1”斗方
+fu=福

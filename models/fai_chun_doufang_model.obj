@@ -1,74 +1,76 @@
-# Luanti Wall Node Model - Single Texture Version
+# Luanti Wall Node Model - Dual Texture Version (Upright Fixes)
 # Shape: Square rotated 45 deg (Diamond)
 # Dimensions: Radius 0.4375 (7/16), Thickness 0.0625 (1/16)
-# Position: Back flush with Z=0.5
 # Texture Mapping:
-#   - Front/Back: Center crop of texture (upright, no scaling)
-#   - Sides: Top edge strip of the same texture (0-0.0625 V-range)
+#   - Front: Center crop (Upright after V-flip fix)
+#   - Back: Same centered crop
+#   - Sides: Top 1/16 strip — no squeezing, overflow ignored
 
 # --- Vertices ---
-# Front Face (Z = 0.4375)
-v 0.437500 0.000000 0.437500  # 1: Right Tip
-v 0.000000 0.437500 0.437500  # 2: Top Tip
-v -0.437500 0.000000 0.437500 # 3: Left Tip
-v 0.000000 -0.437500 0.437500 # 4: Bottom Tip
+v 0.437500 0.000000 0.437500  # 1: Right Tip (front)
+v 0.000000 0.437500 0.437500  # 2: Top Tip (front)
+v -0.437500 0.000000 0.437500 # 3: Left Tip (front)
+v 0.000000 -0.437500 0.437500 # 4: Bottom Tip (front)
 
-# Back Face (Z = 0.5)
-v 0.437500 0.000000 0.500000  # 5: Right Tip
-v 0.000000 0.437500 0.500000  # 6: Top Tip
-v -0.437500 0.000000 0.500000 # 7: Left Tip
-v 0.000000 -0.437500 0.500000 # 8: Bottom Tip
+v 0.437500 0.000000 0.500000  # 5: Right Tip (back)
+v 0.000000 0.437500 0.500000  # 6: Top Tip (back)
+v -0.437500 0.000000 0.500000 # 7: Left Tip (back)
+v 0.000000 -0.437500 0.500000 # 8: Bottom Tip (back)
 
-# --- Texture Coordinates ---
+# --- Texture Coordinates (V-flipped for upright rendering) ---
+# Front & Back: inverted to compensate for engine's V flip
+vt 0.062500 0.500000 # 1: Right  (0.5−0.4375 U, inverted V)
+vt 0.500000 0.937500 # 2: Top    (0.5+0.4375 V)
+vt 0.937500 0.500000 # 3: Left   (0.5+0.4375 U, inverted)
+vt 0.500000 0.062500 # 4: Bottom (0.5−0.4375 V)
 
-# 1-4: Main Face Mapping (Upright)
-# Maps the diamond geometry to the center of the square texture
-vt 0.937500 0.500000 # 1: Right (0.5 + 0.4375)
-vt 0.500000 0.062500 # 2: Top   (0.5 - 0.4375)
-vt 0.062500 0.500000 # 3: Left  (0.5 - 0.4375)
-vt 0.500000 0.937500 # 4: Bottom (0.5 + 0.4375)
+# Back uses same inverted mapping
+vt 0.062500 0.500000 # 5
+vt 0.500000 0.937500 # 6
+vt 0.937500 0.500000 # 7
+vt 0.500000 0.062500 # 8
 
-# 5-8: Side Strip Mapping
-# Uses the top 1/16th slice of the texture for the sides
-vt 0.000000 0.000000        # 5: Origin
-vt 0.618718 0.000000        # 6: Length
-vt 0.618718 0.062500        # 7: Length + Thickness
-vt 0.000000 0.062500        # 8: Thickness
+# Sides: top 1/16 strip — unchanged (V small → invert has minimal visual effect)
+vt 0.000000 0.062500        # 9: Start (V=0.0625)
+vt 0.618718 0.062500        #10: Length (top of strip)
+vt 0.618718 0.000000        #11: Length + V strip bottom
+vt 0.000000 0.000000        #12: End (V=0.0)
 
 # --- Normals ---
-vn 0.0000 0.0000 -1.0000    # 1: Front
-vn 0.0000 0.0000 1.0000     # 2: Back
-vn 0.7071 0.7071 0.0000     # 3: Top-Right
-vn -0.7071 0.7071 0.0000    # 4: Top-Left
-vn -0.7071 -0.7071 0.0000   # 5: Bottom-Left
-vn 0.7071 -0.7071 0.0000    # 6: Bottom-Right
+vn 0.0000 0.0000 -1.0000 # 1: Front
+vn 0.0000 0.0000  1.0000 # 2: Back
+vn 0.7071  0.7071 0.0000 # 3: Top-Right
+vn -0.7071  0.7071 0.0000 # 4: Top-Left
+vn -0.7071 -0.7071 0.0000 # 5: Bottom-Left
+vn 0.7071 -0.7071 0.0000 # 6: Bottom-Right
 
-# --- Faces ---
-# All faces are in one group to use a single tile definition
+# --- Groups & Faces ---
 
-g Diamond_Plate
-
-# Front Face
+# Front (1st texture)
+g Diamond_Front
 f 1/1/1 2/2/1 3/3/1
 f 3/3/1 4/4/1 1/1/1
 
-# Back Face
-f 5/1/2 8/4/2 7/3/2
-f 7/3/2 6/2/2 5/1/2
+# Back & Sides (2nd texture)
+g Diamond_BackSides
 
-# Sides (Using Strip UVs 5-8)
+# Back Face
+f 5/5/2 8/8/2 7/7/2
+f 7/7/2 6/6/2 5/5/2
+
+# Sides — using strip UVs (V=0.0000–0.0625, still no squeezing)
 # Top Right Side
-f 5/5/3 6/6/3 2/7/3
-f 2/7/3 1/8/3 5/5/3
+f 5/9/3 6/10/3 2/11/3
+f 2/11/3 1/12/3 5/9/3
 
 # Top Left Side
-f 6/5/4 7/6/4 3/7/4
-f 3/7/4 2/8/4 6/5/4
+f 6/9/4 7/10/4 3/11/4
+f 3/11/4 2/12/4 6/9/4
 
 # Bottom Left Side
-f 7/5/5 8/6/5 4/7/5
-f 4/7/5 3/8/5 7/5/5
+f 7/9/5 8/10/5 4/11/5
+f 4/11/5 3/12/5 7/9/5
 
 # Bottom Right Side
-f 8/5/6 5/6/6 1/7/6
-f 1/7/6 4/8/6 8/5/6
+f 8/9/6 5/10/6 1/11/6
+f 1/11/6 4/12/6 8/9/6

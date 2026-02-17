@@ -19,7 +19,7 @@ local function register_sign(name, def)
     }
     signs_lib.register_sign(name, def)
     core.override_item(name, {
-        tiles = { "fai_chun_base.png" },
+        tiles = { "fai_chun_base.png", "fai_chun_base.png" },
     })
 end
 
@@ -28,8 +28,15 @@ local function create_inventory_image(mask, mask_dimension)
         "^(" .. mask .. "^[makealpha:255,255,255)^[makealpha:0,0,0"
 end
 
+local BOX_DOUFANG = {
+        type = "fixed",
+        fixed = { -7 / 16, -7 / 16, 7 / 16, 7 / 16, 7 / 16, 0.5 },
+    }
+
+-- Signs Lib Signs
+
 register_sign("fai_chun:doufang_upright", {
-    description = S("Doufang (upright)"),
+    description = S("@1 (upright)", S("Doufang")),
 
     drawtype = "mesh",
     mesh = "fai_chun_doufang_model.obj",
@@ -39,10 +46,7 @@ register_sign("fai_chun:doufang_upright", {
     paramtype2 = "facedir",
     sunlight_propagates = true,
 
-    selection_box = {
-        type = "fixed",
-        fixed = { -7 / 16, -7 / 16, 7 / 16, 7 / 16, 7 / 16, 0.5 },
-    },
+    selection_box = table.copy(BOX_DOUFANG),
     walkable = false,
 
     groups = table.copy(groups),
@@ -60,7 +64,7 @@ register_sign("fai_chun:doufang_upright", {
 })
 
 register_sign("fai_chun:doufang_inverted", {
-    description = S("Doufang (inverted)"),
+    description = S("@1 (inverted)", S("Doufang")),
 
     drawtype = "mesh",
     mesh = "fai_chun_doufang_model.obj",
@@ -72,10 +76,7 @@ register_sign("fai_chun:doufang_inverted", {
     paramtype2 = "facedir",
     sunlight_propagates = true,
 
-    selection_box = {
-        type = "fixed",
-        fixed = { -7 / 16, -7 / 16, 7 / 16, 7 / 16, 7 / 16, 0.5 },
-    },
+    selection_box = table.copy(BOX_DOUFANG),
     walkable = false,
 
     groups = table.copy(groups),
@@ -189,4 +190,48 @@ register_sign("fai_chun:chunlian", {
         mesh = "fai_chun_signtext_chunlian.obj",
         yaw = signs_lib.standard_yaw
     },
+})
+
+-- Texts embedded onto textures
+
+core.register_node("fai_chun:doufang_text_fu_upright", {
+    description = S("@1 (upright)", S("Doufang with text \"@1\"", S("fu"))),
+
+    drawtype = "mesh",
+    mesh = "fai_chun_doufang_model.obj",
+    inventory_image =
+        create_inventory_image("fai_chun_doufang_mask.png", 1000) ..
+        "^fai_chun_doufang_text_fu.png",
+    tiles = {
+        "fai_chun_base.png^[resize:1000x1000^fai_chun_doufang_text_fu.png",
+        "fai_chun_base.png",
+    },
+
+    selection_box = table.copy(BOX_DOUFANG),
+    walkable = false,
+
+    groups = table.copy(groups),
+    sounds = sound_signs,
+    is_ground_content = false,
+})
+
+core.register_node("fai_chun:doufang_text_fu_inverted", {
+    description = S("@1 (inverted)", S("Doufang with text \"@1\"", S("fu"))),
+
+    drawtype = "mesh",
+    mesh = "fai_chun_doufang_model.obj",
+    inventory_image =
+        create_inventory_image("fai_chun_doufang_mask.png", 1000) ..
+        "^(fai_chun_doufang_text_fu.png^[transformR180)",
+    tiles = {
+        "fai_chun_base.png^[resize:1000x1000^(fai_chun_doufang_text_fu.png^[transformR180)",
+        "fai_chun_base.png",
+    },
+
+    selection_box = table.copy(BOX_DOUFANG),
+    walkable = false,
+
+    groups = table.copy(groups),
+    sounds = sound_signs,
+    is_ground_content = false,
 })

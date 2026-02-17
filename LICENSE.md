@@ -31,5 +31,11 @@ All media: 1F616EMO, [CC0][CC0]
 
 Note that `fai_chun_doufang_inverted_indicator.png` is a derived work of `inventory_dir_uturn.png` from `trainblocks`. I am the sole author of that work (technically, the blue background comes fomr elsewhere, but that background does not reach the threshold of originality), and now relicense it under CC0.
 
+The following media are derived works:
+
+* `fai_chun_doufang_text_fu.png`: 1F616EMO, [CC0][CC0]
+  * Contains the text "fu" (福) from [LXGW WenKai Mono TC](https://github.com/lxgw/LxgwWenkaiTC), [OFL 1.1][OFL11]
+
 [CCBYSA4]: https://creativecommons.org/licenses/by-sa/4.0/deed.en
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
+[OFL11]: https://openfontlicense.org/open-font-license-official-text/

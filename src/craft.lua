@@ -6,6 +6,7 @@
 local xcompat_exists = core.global_exists("xcompat")
 local paper = xcompat_exists and xcompat.materials.paper or nil
 local dye_red = xcompat_exists and xcompat.materials.dye_red or nil
+local gold_ingot = xcompat_exists and xcompat.materials.gold_ingot or nil
 
 -- Craft from paper and red dye
 if paper and dye_red then
@@ -33,6 +34,21 @@ if paper and dye_red then
             { "",    dye_red, "" },
             { paper, paper,   paper },
         },
+    })
+end
+
+-- Special fai chun
+if gold_ingot then
+    core.register_craft({
+        type = "shapeless",
+        output = "fai_chun:doufang_text_fu_upright",
+        recipe = { "fai_chun:doufang_upright", gold_ingot },
+    })
+
+    core.register_craft({
+        type = "shapeless",
+        output = "fai_chun:doufang_text_fu_inverted",
+        recipe = { "fai_chun:doufang_inverted", gold_ingot },
     })
 end
 
@@ -68,4 +84,18 @@ core.register_craft({
         { "fai_chun:chuntiao_vertical" },
         { "fai_chun:chuntiao_vertical" },
     }
+})
+
+-- Special fai chun cycling
+
+core.register_craft({
+    type = "shapeless",
+    output = "fai_chun:doufang_text_fu_upright",
+    recipe = { "fai_chun:doufang_text_fu_inverted" },
+})
+
+core.register_craft({
+    type = "shapeless",
+    output = "fai_chun:doufang_text_fu_inverted",
+    recipe = { "fai_chun:doufang_text_fu_upright" },
 })
